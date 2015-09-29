@@ -1,0 +1,65 @@
+<!doctype html>
+<html ng-app="demo" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>Angular bootstrap calendar demo</title>
+    <meta name="description" content="Angular bootstrap calendar demo">
+    <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+        [ng-cloak] {
+            display: none;
+        }
+    </style>
+    <link href="libs/bootstrap.min.css" rel="stylesheet">
+    <link href="libs/angular-bootstrap-calendar.min.css" rel="stylesheet">
+    <link href="css/demo.css" rel="stylesheet">
+</head>
+<body>
+<div class='navbar navbar-default'>
+    <div class='container '>
+        <div class="navbar-header">
+            <a href='/' class="navbar-brand">
+                Blasting Off With Bootstrap
+            </a>
+            <button type='button' class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <ul class="nav navbar-nav navbar-right navbar-static-top collapse navbar-collapse">
+            <li><a href='/'>Home</a></li>
+            <li><a href='codeschool.html'>School</a></li>
+            <li><a href='stations.html'>Stations</a></li>
+            <li>
+                <a href='#' data-toggle="dropdown">About <span class="caret"></span></a>
+                <ul class='dropdown-menu'>
+                    <li><a href="moin.html">Moin</a></li>
+                    <li><a href="moin.html">Moin</a></li>
+                    <li class="divider"></li>
+                    <li><a href="moin.html">Moin</a></li>
+                    <li><a href="moin.html">Moin</a></li>
+                    <li class="divider"></li>
+                    <li><a href="moin.html">Moin</a></li>
+                    <li><a href="moin.html">Moin</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<calendar-view></calendar-view>
+
+
+<script src="libs/angular.min.js"></script>
+<script src="libs/moment.js"></script>
+<script src="libs/jquery.min.js"></script>
+<script src="libs/bootstrap.min.js"></script>
+<script src="libs/angular-bootstrap-calendar.min.js"></script>
+<script src="libs/angular-bootstrap-calendar-tpls.min.js"></script>
+<script src="libs/angular-touch.js"></script>
+<script src="libs/angular-animate.js"></script>
+<script src="libs/angular-ui-bootstrap.js"></script>
+<script src="demo.js"></script>
+</body>
+</html>
