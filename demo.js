@@ -1,33 +1,54 @@
 'use strict';
+(function () {
+    var app = angular.module('demo', ['mwl.calendar', 'ui.bootstrap', 'ngTouch', 'ngAnimate']);
 
-angular
-    .module('demo', ['mwl.calendar', 'ui.bootstrap', 'ngTouch', 'ngAnimate'])
-    .directive("calendarView", function () {
+    app.directive("calendarView", function () {
         return {
             restrict: "E",
             templateUrl: "calendar-view.html"
         };
-    })
-    .directive("calendarEdit", function () {
+    });
+    app.directive("calendarEdit", function () {
         return {
             restrict: "E",
             templateUrl: "calendar-edit.html"
         };
-    })
-    .directive("calendarMain", function () {
+    });
+    app.directive("calendarMain", function () {
         return {
             restrict: "E",
             templateUrl: "calendar-main.html"
         };
-    })
-    .controller('MainCtrl', function ($modal, moment) {
-
+    });
+    app.service('database', ['$http', function ($http) {
+        var svc = {};
+        var value;
+        svc.data = {};
+        svc.getData = function () {
+            $http.get('php/server.php', {table: 'jaja'}).success(function (data) {
+                value = data;
+                svc.data = value;
+                console.log("http: " + value);
+            });
+        };
+        return svc;
+    }]);
+    app.controller('MainCtrl', ['$http', 'moment', function ($http, moment, $modal) {
+        this.getData = function () {
+            var obj = this;
+            obj.events = [];
+            $http.get('php/server.php', {table: 'jaja'}).success(function (data) {
+                obj.events =data.result;
+            });
+        };
+        this.getData();
         var vm = this;
-
         //These variables MUST be set as a minimum for the calendar to work
-        vm.showMenu = false;
+        vm.showMenu = true;
         vm.calendarView = 'month';
         vm.calendarDay = new Date();
+        console.log(vm.events);
+        /*
         vm.events = [
             {
                 title: 'Alte Mensa',
@@ -53,6 +74,9 @@ angular
                 resizable: true
             }
         ];
+        */
+
+
 
         /*
          var currentYear = moment().year();
@@ -107,8 +131,8 @@ angular
         };
 
 
-    });
-
+    }]);
+})();
 
 
 
