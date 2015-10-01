@@ -18,6 +18,7 @@
             <th>Starts at</th>
             <th>Ends at</th>
             <th>Remove</th>
+            <th>Save</th>
         </tr>
         </thead>
 
@@ -32,7 +33,7 @@
             <td>
                 <select ng-model="event.type" class="form-control">
                     <option value="party">Party</option>
-                    <option value="study">Studyg</option>
+                    <option value="study">Study</option>
                     <option value="sport">Sport</option>
                 </select>
             </td>
@@ -93,6 +94,14 @@
                         class="btn btn-danger"
                         ng-click="vm.events.splice($index, 1)">
                     Delete
+                </button>
+            </td>
+            <td>
+                <button
+                        class="btn btn-success"
+                        ng-click="vm.saveData($index)"
+                        ng-hide="event.confirmed">
+                    Save
                 </button>
             </td>
         </tr>
