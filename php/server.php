@@ -18,6 +18,7 @@ class ajax_server {
             $out[] = array(
                 'id' => $row['id'],
                 'title' => $row['title'],
+                'description' => $row['description'],
                 'type' => $row['type'],
                 'startsAt' => $row['startsAt'],
                 'endsAt' => $row['endsAt'],

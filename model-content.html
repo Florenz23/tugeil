@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h3 class="modal-title">tugeil.de</h3>
+</div>
+<div class="modal-body">
+    <p>Event:
+    <pre>{{ vm.event.title }}</pre>
+    </p>
+    <p>Description:
+    <pre>{{ vm.event.description }}</pre>
+    </p>
+    <p>Location:
+    <pre>{{ vm.event.location }}</pre>
+    </p>
+    <p>Link:
+    <pre><a href="{{ vm.event.link }}">{{ vm.event.link }}</a></pre></p>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="$close()">OK</button>
+</div>

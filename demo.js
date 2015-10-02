@@ -2,28 +2,15 @@
 (function () {
     var app = angular.module('demo', ['mwl.calendar', 'ui.bootstrap', 'ngTouch', 'ngAnimate']);
 
-        app.config(function(calendarConfigProvider) {
-
-            calendarConfigProvider.setDateFormatter('moment'); // use either moment or angular to format dates on the calendar. Default angular. Setting this will override any date formats you have already set.
-
-            calendarConfigProvider.setDateFormats({
-                hour: 'HH:mm' // this will configure times on the day view to display in 24 hour format rather than the default of 12 hour
-            });
-
-            calendarConfigProvider.setTitleFormats({
-                day: 'ddd D MMM' //this will configure the day view title to be shorter
-            });
-
-            calendarConfigProvider.setI18nStrings({
-                eventsLabel: 'Events', //This will set the events label on the day view
-                timeLabel: 'Time' //This will set the time label on the time view
-            });
-
-            calendarConfigProvider.setDisplayAllMonthEvents(true); //This will display all events on a month view even if they're not in the current month. Default false.
-
-            calendarConfigProvider.setDisplayEventEndTimes(true); //This will display event end times on the month and year views. Default false.
-
+    //This will change the slide box directive template to one of your choosing
+    app.config(function ($provide) {
+        $provide.decorator('mwlCalendarSlideBoxDirective', function ($delegate) {
+            var directive = $delegate[0];
+            delete directive.template; //the calendar uses template instead of template-url so you need to delete this
+            directive.templateUrl = 'calendar-slide.html';
+            return $delegate;
         });
+    });
 
     app.directive("calendarView", function () {
         return {
@@ -56,7 +43,8 @@
         };
         return svc;
     }]);
-    app.controller('MainCtrl', ['$http', 'moment', function ($http, moment, $modal) {
+    app.controller('MainCtrl', ['$http', 'moment', '$modal', function ($http, moment, $modal) {
+
         this.getData = function () {
             var obj = this;
             obj.events = [];
@@ -72,6 +60,7 @@
             });
         };
         this.getData();
+
         var vm = this;
         //These variables MUST be set as a minimum for the calendar to work
         vm.showMenu = true;
@@ -126,7 +115,8 @@
 
         function showModal(action, event) {
             $modal.open({
-                templateUrl: 'modalContent.html',
+               // templateUrl: 'modalContent.html',
+                templateUrl: 'model-content.html',
                 controller: function () {
                     var vm = this;
                     vm.action = action;
@@ -158,7 +148,7 @@
         };
         vm.formatDate = function (date) {
             date = new Date(date);
-            date= date.format("yyyy-mm-dd hh:mm:ss");
+            date = date.format("yyyy-mm-dd hh:mm:ss");
             return date;
         };
         vm.formatEvent = function (index) {
