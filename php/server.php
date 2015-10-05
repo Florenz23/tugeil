@@ -40,19 +40,23 @@ class ajax_server {
         $data = (array)$data;
         $data = Array (
             'title' => $data['title'],
+            'description' => $data['description'],
             'startsAt' => $data['startsAt'],
+            'type' => $data['type'],
+            'organisation' => $data['organisation'],
             'endsAt' => $data['startsAt'],
             'endsAt' => $data['endsAt'],
             'location' => $data['location'],
             'link' => $data['link'],
             'draggable' => $data['draggable'] ==="true",
-            'resizable' => $data['resizable'] === "true"
+            'resizable' => $data['resizable'] === "true",
+            'confirmed' => 0
         );
         $id = $this->db->insert ( 'tugeil_events', $data );
         if ( $id )
-            echo 'user was created. Id=' . $id;
+            echo '{"status":"ok"}';
         else
-            echo 'insert failed: ' . $this->db->getLastError();
+            echo '{"status":"'.$this->db->getLastError().'"}';
     }
 }
 

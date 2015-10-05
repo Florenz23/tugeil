@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-    var app = angular.module('demo', ['mwl.calendar', 'ui.bootstrap', 'ngTouch', 'ngAnimate']);
+    var app = angular.module('demo', ['mwl.calendar', 'ui.bootstrap', 'ngTouch', 'ngAnimate','calendarNewEvent']);
 
     //This will change the slide box directive template to one of your choosing
     app.config(function ($provide) {
@@ -16,6 +16,12 @@
         return {
             restrict: "E",
             templateUrl: "calendar-view.html"
+        };
+    });
+    app.directive("calendarNewEvent", function () {
+        return {
+            restrict: "E",
+            templateUrl: "calendar-new-event.html"
         };
     });
     app.directive("calendarEdit", function () {
@@ -38,7 +44,6 @@
             $http.get('php/server.php', {table: 'jaja'}).success(function (data) {
                 value = data;
                 svc.data = value;
-                console.log("http: " + value);
             });
         };
         return svc;
@@ -53,7 +58,6 @@
                 url: 'php/server.php?operation=calendarGetData'
             }).then(function successCallback(response) {
                 obj.events = response.data.result;
-                console.log(obj.events);
             }, function errorCallback(response) {
                 console.log("error");
                 console.log(response.statusText);
@@ -63,8 +67,9 @@
 
         var vm = this;
         //These variables MUST be set as a minimum for the calendar to work
-        vm.showMenu = true;
-        vm.calendarView = 'month';
+        vm.showCalendar = false;
+        vm.showMenu = false;
+        vm.calendarView = 'week';
         vm.calendarDay = new Date();
         /*
          vm.events = [
@@ -176,6 +181,7 @@
             });
         };
     }]);
+
 })();
 
 

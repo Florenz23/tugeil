@@ -2,8 +2,9 @@
 
     <div class="row" ng-controller="MainCtrl as vm" id="demo">
         <div class="col-md-8 col-md-offset-2" ng-controller="MainCtrl as main">
-            <calendar-main ng-show="true"></calendar-main>
-            <calendar-edit ng-show="main.showMenu"></calendar-edit>
+            <calendar-main ng-show="vm.showCalendar"></calendar-main>
+            <calendar-new-event ng-show="true"></calendar-new-event>
+            <calendar-edit ng-show="vm.showMenu"></calendar-edit>
         </div>
     </div>
 </div>
