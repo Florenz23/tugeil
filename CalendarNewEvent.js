@@ -18,7 +18,7 @@
             endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
             description: "So wie immer Samstagsdisko halt kacke"
         };
-       // $scope.event = {};
+        $scope.event = {};
 
 
         $scope.toggle = function ($event, field, event) {

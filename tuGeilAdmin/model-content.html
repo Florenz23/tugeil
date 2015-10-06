@@ -2,11 +2,14 @@
     <h3 class="modal-title">tugeil.de</h3>
 </div>
 <div class="modal-body">
-    <p>Event description:
-    <pre>{{ vm.event.title }}<br><br>{{ vm.event.description }}</pre>
+    <p>Event:
+    <pre>{{ vm.event.title }}</pre>
     </p>
-    <p>Important to know:
-    <pre>When: <br>{{ vm.event.startsAt }} Uhr<br><br>Where:<br>{{ vm.event.location }}<br><br>Who:<br>{{ vm.event.organisation }}</pre>
+    <p>Description:
+    <pre>{{ vm.event.description }}</pre>
+    </p>
+    <p>Location:
+    <pre>{{ vm.event.location }}</pre>
     </p>
     <p>Link:
     <pre><a href="{{ vm.event.link }}">{{ vm.event.link }}</a></pre></p>

@@ -1,0 +1,151 @@
+<!--http://formvalidation.io/examples/complex-form/ -->
+
+<style type="text/css">
+    /* Adjust feedback icon position */
+    #movieForm .form-control-feedback {
+        right: 15px;
+    }
+
+    #movieForm .selectContainer .form-control-feedback {
+        right: 25px;
+    }
+</style>
+<div>
+    <form name="eventForm" ng-controller="NewEventController as newEventCtrl"
+          ng-submit="save()" novalidate>
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="form-group" show-errors='{showSuccess: true}'>
+                    <label class="control-label">Event title</label>
+                    <input ng-model="event.title" type="text" class="form-control" name="title"
+                           required/>
+
+                    <p class="help-block" ng-if="eventForm.title.$error.required">Please enter a title for your
+                        event</p>
+                </div>
+            </div>
+
+            <div class="col-xs-4 selectContainer">
+                <div class="form-group" show-errors='{showSuccess: true}'>
+                    <label class="control-label">Type</label>
+                    <select class="form-control" name="type" ng-model="event.type"
+                            ng-options="type for type in ['party','sport','study','meeting']" required>
+                        <option value="">-- Select an event type --</option>
+                    </select>
+
+                    <p class="help-block" ng-if="eventForm.type.$error.required">Please enter a type for better
+                        categoration</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-8">
+                    <label class="control-label">Link</label>
+                    <input type="url" class="form-control" name="link" ng-model="event.link"
+                           placeholder="https://tugeil.de"/>
+                </div>
+
+
+                <div class="col-xs-4">
+                    <label class="control-label">Organisation</label>
+                    <input type="text" class="form-control" name="producer"
+                           ng-model="event.organisation"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="form-group" show-errors='{showSuccess: true}'>
+                    <label class="control-label">Location</label>
+                <textarea type="text" class="form-control" name="location" ng-model="event.location"
+                          required>
+                </textarea>
+
+                    <p class="help-block" ng-if="eventForm.location.$error.required">Your event is in a urgent need of a
+                        location!</p>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group" show-errors='{showSuccess: true}'>
+                    <label class="control-label">Starts At</label>
+
+                    <p class="input-group" style="max-width: 250px">
+                        <input
+                                type="text"
+                                name="startsAt"
+                                class="form-control"
+                                readonly
+                                datepicker-popup="dd MMMM yyyy"
+                                ng-model="event.startsAt"
+                                is-open="event.startOpen"
+                                close-text="Close" required>
+                    <span class="input-group-btn">
+                      <button
+                              type="button"
+                              class="btn btn-default"
+                              ng-click="toggle($event, 'startOpen', event)">
+                          <i class="glyphicon glyphicon-calendar"></i>
+                      </button>
+                    </span>
+                    </p>
+                    <timepicker
+                            ng-model="newEventCtrl.event.startsAt"
+                            hour-step="1"
+                            minute-step="15"
+                            show-meridian="false">
+                    </timepicker>
+                    <p class="help-block" ng-if="eventForm.startsAt.$error.required">Your event is in a urgent need of a
+                        beginning time!</p>
+                </div>
+
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label class="control-label">Ends At</label>
+
+                    <p class="input-group" style="max-width: 250px">
+                        <input
+                                type="text"
+                                class="form-control"
+                                readonly
+                                datepicker-popup="dd MMMM yyyy"
+                                ng-model="event.endsAt"
+                                is-open="event.endOpen"
+                                close-text="Close">
+                    <span class="input-group-btn">
+                      <button
+                              type="button"
+                              class="btn btn-default"
+                              ng-click="toggle($event, 'endOpen', event)">
+                          <i class="glyphicon glyphicon-calendar"></i>
+                      </button>
+                    </span>
+                    </p>
+                    <timepicker
+                            ng-model="event.endsAt"
+                            hour-step="1"
+                            minute-step="15"
+                            show-meridian="false">
+                    </timepicker>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group" show-errors='{showSuccess: true}'>
+            <label class="control-label">Description</label>
+            <textarea class="form-control" name="description" rows="8" ng-model="event.description"
+                      required></textarea>
+            <p class="help-block" ng-if="eventForm.description.$error.required">Please enter a detailed description, so everyone knows what to expect.</p>
+        </div>
+
+        <button type="submit" class="btn btn-lg btn-primary">Save Event
+        </button>
+    </form>
+</div>
+
+
+

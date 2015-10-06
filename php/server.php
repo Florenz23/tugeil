@@ -20,6 +20,7 @@ class ajax_server {
                 'title' => $row['title'],
                 'description' => $row['description'],
                 'type' => $row['type'],
+                'organisation' => $row['organisation'],
                 'startsAt' => $row['startsAt'],
                 'endsAt' => $row['endsAt'],
                 'location' => $row['location'],

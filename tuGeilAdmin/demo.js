@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-    var app = angular.module('demo', ['mwl.calendar', 'ui.bootstrap', 'ngTouch', 'ngAnimate','calendarNewEvent']);
+    var app = angular.module('demo', ['mwl.calendar', 'ui.bootstrap', 'ngTouch', 'ngAnimate']);
 
     //This will change the slide box directive template to one of your choosing
     app.config(function ($provide) {
@@ -16,24 +16,6 @@
         return {
             restrict: "E",
             templateUrl: "calendar-view.html"
-        };
-    });
-    app.directive("calendarNewEvent", function () {
-        return {
-            restrict: "E",
-            templateUrl: "calendar-new-event.html"
-        };
-    });
-    app.directive("calendarNewEventForm", function () {
-        return {
-            restrict: "E",
-            templateUrl: "calendar-new-event-form.html"
-        };
-    });
-    app.directive("calendarNewEventButton", function () {
-        return {
-            restrict: "E",
-            templateUrl: "calendar-new-event-button.html"
         };
     });
     app.directive("calendarEdit", function () {
@@ -61,36 +43,15 @@
         return svc;
     }]);
     app.controller('MainCtrl', ['$http', 'moment', '$modal', function ($http, moment, $modal) {
-        this.formatTime = function (date) {
-            date = new Date(date);
-            date = date.format("hh:mm");
-            return date;
-        };
-        this.formatDates = function (event_array) {
-            for (var i = 0; i<event_array.length;i++){
-                var event = event_array[i];
-                var startsAt = event.startsAt;
-                var endsAt = event.endsAt;
-                startsAt = this.formatTime(startsAt);
-                event_array[i].start = startsAt;
-                endsAt = this.formatTime(endsAt);
-                event_array[i].end = endsAt;
-            }
-            return event_array;
-        };
 
         this.getData = function () {
             var obj = this;
-            var formated_obj;
             obj.events = [];
             $http({
                 method: 'GET',
-                url: 'php/server.php?operation=calendarGetData'
+                url: '../php/server.php?operation=calendarGetData'
             }).then(function successCallback(response) {
-                formated_obj = response.data.result;
-                formated_obj = obj.formatDates(formated_obj);
-                console.log(formated_obj);
-                obj.events = formated_obj;
+                obj.events = response.data.result;
             }, function errorCallback(response) {
                 console.log("error");
                 console.log(response.statusText);
@@ -100,8 +61,7 @@
 
         var vm = this;
         //These variables MUST be set as a minimum for the calendar to work
-        vm.showCalendar = true;
-        vm.calendarView = 'week';
+        vm.calendarView = 'month';
         vm.calendarDay = new Date();
         /*
          vm.events = [
@@ -130,26 +90,6 @@
          }
          ];
          */
-
-
-        /*
-         var currentYear = moment().year();
-         var currentMonth = moment().month();
-
-         function random(min, max) {
-         return Math.floor((Math.random() * max) + min);
-         }
-
-         for (var i = 0; i < 1000; i++) {
-         var start = new Date(currentYear,random(0, 11),random(1, 28),random(0, 24),random(0, 59));
-         vm.events.push({
-         title: 'Event ' + i,
-         type: 'warning',
-         startsAt: start,
-         endsAt: moment(start).add(2, 'hours').toDate()
-         })
-         }*/
-
         function showModal(action, event) {
             $modal.open({
                // templateUrl: 'modalContent.html',
@@ -185,18 +125,8 @@
         };
 
         vm.saveData = function (index) {
-            this.formatEvent(index);
-            var data = this.events[index];
-            data = JSON.stringify(data);
-            $http({
-                method: 'POST',
-                url: 'php/server.php?operation=calendarSaveEvent&data=' + data
-            }).then(function successCallback(response) {
-                console.log(response)
-            }, function errorCallback(response) {
-                console.log("error");
-                console.log(response.statusText);
-            });
+            //todo change confirmed to tue in database
+            console.log("todo");
         };
     }]);
 
