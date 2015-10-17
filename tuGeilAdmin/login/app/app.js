@@ -5,27 +5,27 @@ app.config(['$routeProvider',
         $routeProvider.
         when('/login', {
             title: 'Login',
-            templateUrl: 'partials/login.html',
+            templateUrl: 'login/partials/login.html',
             controller: 'authCtrl'
         })
             .when('/logout', {
                 title: 'Logout',
-                templateUrl: 'partials/login.html',
+                templateUrl: 'login/partials/login.html',
                 controller: 'logoutCtrl'
             })
             .when('/signup', {
                 title: 'Signup',
-                templateUrl: 'partials/signup.html',
+                templateUrl: 'login/partials/signup.html',
                 controller: 'authCtrl'
             })
             .when('/dashboard', {
                 title: 'Dashboard',
-                templateUrl: 'partials/dashboard.html',
+                templateUrl: 'calendar-view.html',
                 controller: 'authCtrl'
             })
             .when('/', {
                 title: 'Login',
-                templateUrl: 'partials/login.html',
+                templateUrl: 'login/partials/login.html',
                 controller: 'authCtrl',
                 role: '0'
             })

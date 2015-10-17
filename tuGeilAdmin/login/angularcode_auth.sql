@@ -3,10 +3,10 @@ CREATE DATABASE IF NOT EXISTS angularcode;
 USE angularcode;
 
 --
--- Table structure for table `customers_auth`
+-- Table structure for table `tugeil_customers_auth`
 --
 
-CREATE TABLE IF NOT EXISTS `customers_auth` (
+CREATE TABLE IF NOT EXISTS `tugeil_customers_auth` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -19,10 +19,10 @@ CREATE TABLE IF NOT EXISTS `customers_auth` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=187 ;
 
 --
--- Dumping data for table `customers_auth`
+-- Dumping data for table `tugeil_customers_auth`
 --
 
-INSERT INTO `customers_auth` (`uid`, `name`, `email`, `phone`, `password`, `address`, `city`, `created`) VALUES
+INSERT INTO `tugeil_customers_auth` (`uid`, `name`, `email`, `phone`, `password`, `address`, `city`, `created`) VALUES
 (169, 'Swadesh Behera', 'swadesh@gmail.com', '1234567890', '$2a$10$251b3c3d020155f7553c1ugKfEH04BD6nbCbo78AIDVOqS3GVYQ46', '4092 Furth Circle', 'Singapore', '2014-08-31 18:21:20'),
 (170, 'Ipsita Sahoo', 'ipsita@gmail.com', '1111111111', '$2a$10$d84ffcf46967db4e1718buENHT7GVpcC7FfbSqCLUJDkKPg4RcgV2', '2, rue du Commerce', 'NYC', '2014-08-31 18:30:58'),
 (171, 'Trisha Tamanna Priyadarsini', 'trisha@gmail.com', '2222222222', '$2a$10$c9b32f5baa3315554bffcuWfjiXNhO1Rn4hVxMXyJHJaesNHL9U/O', 'C/ Moralzarzal, 86', 'Burlingame', '2014-08-31 18:32:03'),

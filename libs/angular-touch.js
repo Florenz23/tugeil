@@ -224,7 +224,7 @@
      *
      * @example
      <example module="ngClickExample" deps="angular-touch.js">
-     <file name="index.html">
+     <file name="calendar.html">
      <button ng-click="count = count + 1" ng-init="count=0">
      Increment
      </button>
@@ -513,7 +513,7 @@
      *
      * @example
      <example module="ngSwipeLeftExample" deps="angular-touch.js">
-     <file name="index.html">
+     <file name="calendar.html">
      <div ng-show="!showActions" ng-swipe-left="showActions = true">
      Some list content, like an email in the inbox
      </div>
@@ -546,7 +546,7 @@
      *
      * @example
      <example module="ngSwipeRightExample" deps="angular-touch.js">
-     <file name="index.html">
+     <file name="calendar.html">
      <div ng-show="!showActions" ng-swipe-left="showActions = true">
      Some list content, like an email in the inbox
      </div>

@@ -3557,7 +3557,7 @@
      * Say for example we have the following template code:
      *
      * ```html
-     * <!-- index.html -->
+     * <!-- calendar.html -->
      * <div ng-view class="view-animation">
      * </div>
      *
@@ -3649,7 +3649,7 @@
      id="anchoringExample"
      deps="angular-animate.js;angular-route.js"
      animations="true">
-     <file name="index.html">
+     <file name="calendar.html">
      <a href="#/">Home</a>
      <hr />
      <div class="view-container">

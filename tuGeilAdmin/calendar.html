@@ -1,0 +1,61 @@
+<!doctype html>
+<html ng-app="demo" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>TuGeil</title>
+    <meta name="description" content="Angular bootstrap calendar demo">
+    <meta name="viewport" content="width=device-width">
+    <link href="login/css/custom.css" rel="stylesheet">
+    <link href="login/css/toaster.css" rel="stylesheet">
+    <style>
+        a {
+            color: orange;
+        }
+    </style>
+    <style type="text/css">
+        [ng-cloak] {
+            display: none;
+        }
+    </style>
+    <link href="../libs/bootstrap.min.css" rel="stylesheet">
+    <link href="../libs/bootstrap-dialog.min.css" rel="stylesheet">
+    <link href="../libs/angular-bootstrap-calendar.min.css" rel="stylesheet">
+    <link href="../css/newEventForm.css" rel="stylesheet">
+    <link href="../css/demo.css" rel="stylesheet">
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+</head>
+<body ng-cloak="">
+<a ng-click="logout();">Logout</a>
+<div >
+    <div  style="margin-top:20px;">
+
+        <div data-ng-view="" id="ng-view" class="slide-animation"></div>
+
+    </div>
+<toaster-container toaster-options="{'time-out': 3000}"></toaster-container>
+
+<script src="../libs/angular.min.js"></script>
+
+<script src="login/js/angular-route.min.js"></script>
+<script src="login/js/toaster.js"></script>
+
+<script src="../libs/moment.js"></script>
+<script src="../libs/jquery.min.js"></script>
+<script src="../libs/bootstrap.min.js"></script>
+<script src="../libs/bootstrap-dialog.min.js"></script>
+<script src="../libs/angular-bootstrap-calendar.min.js"></script>
+<script src="../libs/angular-bootstrap-calendar-tpls.min.js"></script>
+<script src="../libs/angular-touch.js"></script>
+<script src="../libs/angular-animate.js"></script>
+<script src="../libs/angular-ui-bootstrap.js"></script>
+<script src="../libs/date-format.js"></script>
+<script src="demo.js"></script>
+
+<script src="login/app/app.js"></script>
+<script src="login/app/data.js"></script>
+<script src="login/app/directives.js"></script>
+<script src="login/app/authCtrl.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 'use strict';
 (function () {
-    var app = angular.module('demo', ['mwl.calendar', 'ui.bootstrap', 'ngTouch', 'ngAnimate']);
+    var app = angular.module('demo', ['mwl.calendar', 'ui.bootstrap', 'ngTouch', 'ngAnimate','myApp']);
 
     //This will change the slide box directive template to one of your choosing
     app.config(function ($provide) {
