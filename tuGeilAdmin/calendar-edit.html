@@ -92,14 +92,14 @@
             <td>
                 <button
                         class="btn btn-danger"
-                        ng-click="vm.events.splice($index, 1)">
+                        ng-click="vm.events.splice($index, 1);vm.deleteData(event.id)">
                     Delete
                 </button>
             </td>
             <td>
                 <button
                         class="btn btn-success"
-                        ng-click="vm.saveData($index)"
+                        ng-click="vm.saveData(event.id)"
                         ng-hide="event.confirmed">
                     Save
                 </button>

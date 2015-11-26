@@ -124,9 +124,23 @@
             event[field] = !event[field];
         };
 
-        vm.saveData = function (index) {
+        vm.deleteData = function (event_id) {
             //todo change confirmed to tue in database
-            console.log("todo");
+            console.log(event);
+            var data = {
+                id : event_id
+            };
+            data = JSON.stringify(data);
+            console.log(data);
+            $http({
+                method: 'POST',
+                url: '../php/server.php?operation=calendarDeleteEvent&data=' + data
+            }).then(function successCallback(response) {
+                console.log(response)
+            }, function errorCallback(response) {
+                console.log("error");
+                console.log(response.statusText);
+            });
         };
     }]);
 

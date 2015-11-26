@@ -36,6 +36,13 @@ class ajax_server {
 
     }
 
+    public function calendarDeleteEvent( $data ) {
+        $data = json_decode( $data['data'] );
+        $data = (array)$data;
+        $this->db->where('id  ', $data['id']);
+        if($this->db->delete('tugeil_events')) echo 'successfully deleted';
+    }
+
     public function calendarSaveEvent( $data ) {
         $data = json_decode( $data['data'] );
         $data = (array)$data;
